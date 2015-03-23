@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/.gitignore" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/components/accessible-icon.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/templates/components/accessible-icon.hbs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tests/dummy/app/app.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tests/dummy/app/index.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tests/helpers/resolver.js" charset="UTF-8" />
+  </component>
 </project>
