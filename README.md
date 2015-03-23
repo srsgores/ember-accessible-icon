@@ -6,7 +6,16 @@ Keep your icons accessible, using this binding-friendly component.  Produces the
 
 ## Detecting Font Support
 
-Since each project has its own varied support and supported browsers, I opted to not include any feature detection.  To do this, include 
+Since each project has its own varied support and supported browsers, I opted to not include any feature detection.  To do this, include these scripts in your ``Brocfile.js``:
+
+```
+npm install --save-dev afontgarde
+```
+
+```
+app.import("../node_modules/a-font-garde/lib/faceoff.js");
+app.import("../node_modules/a-font-garde/lib/modernizr.fontface-generatedcontent.js");
+```
 
 ## Installation
 
