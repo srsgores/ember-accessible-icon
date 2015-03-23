@@ -1,7 +1,4 @@
-import {
-	moduleForComponent,
-	test
-} from "ember-qunit";
+import {moduleForComponent, test} from "ember-qunit";
 
 moduleForComponent("accessible-icon", {
 	// specify the other units that are required for this test
@@ -29,4 +26,32 @@ test("it has aria-hidden attribute when decorative", (assert) => {
 	this.render();
 
 	assert.equal(this.$().attr("aria-hidden"), "true");
+});
+
+test("it has aria role=presentation attribute when decorative", (assert) => {
+	var component = this.subject();
+	Ember.run(()=> {
+			component.set("isDecorative", true);
+		}
+	);
+	this.render();
+
+	assert.equal(this.$().attr("role"), "presentation");
+});
+
+test("it has properly-namespaced class name", (assert) => {
+	assert.expect(2);
+
+	var component = this.subject();
+	Ember.run(()=> {
+			component.setProperties({
+				namespace: "custom-icon",
+				icon: "wrench"
+			});
+		}
+	);
+	this.render();
+
+	assert.ok(this.$().hasClass("custom-icon"));
+	assert.ok(this.$().hasClass("icon-wrench"));
 });
