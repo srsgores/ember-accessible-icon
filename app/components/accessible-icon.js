@@ -9,7 +9,7 @@ export default Ember.Component.extend({
 	 * 	.icon .icon-wrench
 	 */
 	namespace: "icon",
-	classNameBindings: ["iconClassName"],
+	classNameBindings: ["namespace", "iconClassName", "fallbackClassName"],
 	title: null,
 	attributeBindings: ["role", "aria-hidden", "title"],
 	text: Ember.computed("icon", ()=>{
@@ -31,14 +31,15 @@ export default Ember.Component.extend({
 		}
 	),
 	"aria-hidden": Ember.computed.alias("isDecorative"),
-	iconClassName: Ember.computed("icon", ()=>{
-		return [
-			this.get("namespace"),
-			this.getNamespacedClassName(this.get("icon"))
-		].compact().join(" ");
-	}),
 	titleClassName: Ember.computed("namespace", ()=>{
 		return this.getNamespacedClassName("description");
+	}),
+	iconClassName: Ember.computed("icon", () => {
+			return this.getNamespacedClassName(this.get("icon"));
+		}
+	),
+	fallbackClassName: Ember.computed("namespae", ()=> {
+		return this.getNamespacedClassName("fallback-glyph");
 	}),
 	fallbackTextClassName: Ember.computed("namespace", ()=>{
 		return this.getNamespacedClassName("fallback-text")
