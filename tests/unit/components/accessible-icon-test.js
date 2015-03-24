@@ -1,11 +1,12 @@
 import {moduleForComponent, test} from "ember-qunit";
+import Ember from "ember";
 
 moduleForComponent("accessible-icon", {
 	// specify the other units that are required for this test
 	// needs: ["component:foo", "helper:bar"]
 });
 
-test("it renders", (assert) => {
+test("it renders", function(assert) {
 	assert.expect(2);
 
 	// creates the component instance
@@ -17,10 +18,10 @@ test("it renders", (assert) => {
 	assert.equal(component._state, "inDOM");
 });
 
-test("it has aria-hidden attribute when decorative", (assert) => {
+test("it has aria-hidden attribute", function(assert) {
 	var component = this.subject();
 	Ember.run(()=> {
-			component.set("isDecorative", true);
+			component.set("icon", "wrench");
 		}
 	);
 	this.render();
@@ -28,9 +29,9 @@ test("it has aria-hidden attribute when decorative", (assert) => {
 	assert.equal(this.$().attr("aria-hidden"), "true");
 });
 
-test("it has aria role=presentation attribute when decorative", (assert) => {
+test("it has aria role=presentation attribute when decorative", function(assert) {
 	var component = this.subject();
-	Ember.run(()=> {
+	Ember.run(() => {
 			component.set("isDecorative", true);
 		}
 	);
@@ -39,7 +40,7 @@ test("it has aria role=presentation attribute when decorative", (assert) => {
 	assert.equal(this.$().attr("role"), "presentation");
 });
 
-test("it has properly-namespaced class name", (assert) => {
+test("it has properly-namespaced class name", function(assert) {
 	assert.expect(2);
 
 	var component = this.subject();

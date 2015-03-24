@@ -9,10 +9,10 @@ export default Ember.Component.extend({
 	 * 	.icon .icon-wrench
 	 */
 	namespace: "icon",
-	classNameBindings: ["namespace", "iconClassName", "fallbackClassName"],
+	classNameBindings: [":accessible-icon", "fallbackClassName"],
 	title: null,
 	attributeBindings: ["role", "aria-hidden", "title"],
-	text: Ember.computed("icon", ()=>{
+	text: Ember.computed("icon", function() {
 		if(this.get("icon")){
 			return `${Ember.String.capitalize(this.get("icon"))}`;
 		}
@@ -25,24 +25,24 @@ export default Ember.Component.extend({
 			* */
 		}
 	}),
+	fallback: true,
+	fallbackType: "glyph",
 	isDecorative: Ember.computed.notEmpty("title"),
-	role: Ember.computed("isDecorative", () => {
+	role: Ember.computed("isDecorative", function() {
 			return this.get("isDecorative") ? "presentation" : null;
 		}
 	),
 	"aria-hidden": Ember.computed.alias("isDecorative"),
-	titleClassName: Ember.computed("namespace", ()=>{
-		return this.getNamespacedClassName("description");
-	}),
-	iconClassName: Ember.computed("icon", () => {
-			return this.getNamespacedClassName(this.get("icon"));
+	iconClassName: Ember.computed("icon", function() {
+			return `${this.get("namespace")} ${this.getNamespacedClassName(this.get("icon"))}`;
 		}
 	),
-	fallbackClassName: Ember.computed("namespae", ()=> {
-		return this.getNamespacedClassName("fallback-glyph");
+	iconHiddenToScreenReader: true,
+	fallbackClassName:  Ember.computed("namespace", "fallbackType", "fallback", function() {
+		return this.get("fallback") ? this.getNamespacedClassName(`fallback-${this.get("fallbackType")}`) : null;
 	}),
-	fallbackTextClassName: Ember.computed("namespace", ()=>{
-		return this.getNamespacedClassName("fallback-text")
+	fallbackTextClassName: Ember.computed("namespace", function() {
+		return this.getNamespacedClassName("fallback-text");
 	}),
 	/**
 	 * Get the dasherized CSS-namespaced class name for a given string, using the current CSS namespace
@@ -50,12 +50,12 @@ export default Ember.Component.extend({
 	 * @param className
 	 * @returns {*}
 	 */
-	getNamespacedClassName: (className=null) => {
+	getNamespacedClassName: function (className) {
 		if (!className || Ember.isBlank(className)) {
 			return null;
 		}
 		else {
-			return this.get("namespace") ? `${this.get("namespace")}-${className}` : className
+			return this.get("namespace") ? `${this.get("namespace")}-${className}` : className;
 		}
 	}
 });

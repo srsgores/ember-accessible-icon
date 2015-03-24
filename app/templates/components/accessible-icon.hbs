@@ -1,12 +1,13 @@
-{{#if title}}
-	<span {{bind-attr class=titleClassName}}>
-		{{title}}
-	</span>
+{{#if icon}}
+	<span {{bind-attr class=iconClassName aria-hidden=iconHiddenToScreenReader}}></span>
 {{/if}}
-{{#if text}}
-	<span {{bind-attr class=fallbackTextClassName}}>
-		{{text}}
-	</span>
+
+{{#if fallback}}
+	{{#if text}}
+		<span {{bind-attr class=fallbackTextClassName}}>
+			{{text}}
+		</span>
+	{{/if}}
 {{/if}}
 
 
