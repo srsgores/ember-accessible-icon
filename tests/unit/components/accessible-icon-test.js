@@ -18,7 +18,7 @@ test("it renders", function(assert) {
 	assert.equal(component._state, "inDOM");
 });
 
-test("it has aria-hidden attribute", function(assert) {
+test("it contains an icon with aria-hidden attribute", function(assert) {
 	var component = this.subject();
 	Ember.run(()=> {
 			component.set("icon", "wrench");
@@ -26,7 +26,7 @@ test("it has aria-hidden attribute", function(assert) {
 	);
 	this.render();
 
-	assert.equal(this.$().attr("aria-hidden"), "true");
+	assert.equal(this.$().find(".icon:first").attr("aria-hidden"), "true");
 });
 
 test("it has aria role=presentation attribute when decorative", function(assert) {
@@ -40,19 +40,67 @@ test("it has aria role=presentation attribute when decorative", function(assert)
 	assert.equal(this.$().attr("role"), "presentation");
 });
 
-test("it has properly-namespaced class name", function(assert) {
+test("it has an icon with properly-namespaced class name", function(assert) {
 	assert.expect(2);
 
-	var component = this.subject();
+	var component = this.subject(),
+		testIcon = "wrench",
+		testNamespace = "custom-namespace";
+
 	Ember.run(()=> {
 			component.setProperties({
-				namespace: "custom-icon",
-				icon: "wrench"
+				namespace: testNamespace,
+				icon: testIcon
 			});
 		}
 	);
 	this.render();
+	let $icon = this.$().find(`.${testNamespace}:first`);
+	assert.ok($icon.length);
+	assert.ok($icon.hasClass(`${testNamespace}-${testIcon}`));
+});
 
-	assert.ok(this.$().hasClass("custom-icon"));
-	assert.ok(this.$().hasClass("icon-wrench"));
+test("it omits the icon when none is passed in", function(assert) {
+	let component = this.subject();
+	let namespace = component.get("namespace");
+	this.render();
+	let $icon = this.$().find(`.${namespace}:first`);
+	assert.equal($icon.length, 0);
+});
+
+// fallbacks
+
+test("it has proper fallback class name", function(assert) {
+	var component = this.subject(),
+		testNamespace = "testNamespace",
+		testFallback = true,
+		testFallbackType = "text";
+	Ember.run(()=> {
+			component.setProperties({
+				fallback: testFallback,
+				fallbackType: testFallbackType,
+				namespace: testNamespace
+			});
+		}
+	);
+	this.render();
+	assert.ok(this.$().hasClass(`${testNamespace}-fallback-${testFallbackType}`));
+});
+
+test("it omits fallback text when fallback is disabled", function(assert) {
+	var component = this.subject(),
+		fallbackEnabled = false,
+		fallbackType = "text",
+		namespace = "icon";
+	Ember.run(()=> {
+			component.setProperties({
+				fallback: fallbackEnabled,
+				fallbackType: fallbackType,
+				namespace: namespace
+			});
+		}
+	);
+	this.render();
+	let $fallbackText = this.$().find(`.${namespace}-fallback-${fallbackType}`);
+	assert.equal($fallbackText.length, 0);
 });

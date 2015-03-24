@@ -1,7 +1,22 @@
 <main>
 	<article>
 		<h2>Accessible Icon</h2>
-		{{accessible-icon icon="wrench" title="Wrench Icon"}}
+		<section>
+			<h3>Basic</h3>
+			{{accessible-icon icon="wrench"}}
+		</section>
+		<section>
+			<h3>With Title:</h3>
+			{{accessible-icon icon="arrow-right" title="Continue to Log In"}}
+		</section>
+		<section>
+			<h3>Custom Fallback Type <sup>(image instead of default "glyph")</sup></h3>
+			{{accessible-icon icon="download" title="Download Video Archive" fallbackType="image"}}
+		</section>
+		<section>
+			<h3>Without Fallback</h3>
+			{{accessible-icon icon="download" title="Download Video Archive" fallback=false}}
+		</section>
 	</article>
 </main>
 

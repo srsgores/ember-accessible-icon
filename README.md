@@ -23,6 +23,67 @@ app.import("../node_modules/a-font-garde/lib/modernizr.fontface-generatedcontent
 2. Customize CSS to your liking (add hidden classes to fallbacks) - see demo for example
 3. Enjoy
 
+## Usage
+
+**Basic Usage:**
+
+```
+{{accessible-icon icon="wrench"}}
+```
+
+Renders:
+
+```
+<icon class="ember-view accessible-icon icon-fallback-glyph has-fallback">
+	<span class="icon icon-wrench" aria-hidden="true"></span>
+	<span class="icon-fallback-text">Wrench</span>
+</icon>
+```
+
+**With ``title``**:
+
+```
+{{accessible-icon icon="arrow-right" title="Continue to Log In"}}
+```
+
+Renders:
+
+```
+<icon class="ember-view accessible-icon icon-fallback-glyph has-fallback" title="Continue to Log In">
+	<span class="icon icon-arrow-right" aria-hidden="true"></span>
+	<span class="icon-fallback-text">Arrow-right</span>
+</icon>
+```
+
+**With alternative fallback**:
+
+```
+{{accessible-icon icon="download" title="Download Video Archive" fallbackType="image"}}
+```
+
+Renders:
+
+```
+<icon class="ember-view accessible-icon icon-fallback-image has-fallback" title="Download Video Archive">
+	<span class="icon icon-download" aria-hidden="true"></span>
+	<span class="icon-fallback-text">Download</span>
+</icon>
+```
+
+**Without fallback**:
+
+```
+{{accessible-icon icon="download" title="Download Video Archive" fallback=false}}
+```
+
+Renders:
+
+```
+<icon class="ember-view accessible-icon" title="Download Video Archive">
+	<span class="icon icon-download" aria-hidden="true"></span>
+</icon>
+```
+
 ## Running
 
 * `ember server`

@@ -9,7 +9,7 @@ export default Ember.Component.extend({
 	 * 	.icon .icon-wrench
 	 */
 	namespace: "icon",
-	classNameBindings: [":accessible-icon", "fallbackClassName"],
+	classNameBindings: [":accessible-icon", "fallbackClassName", "fallback:has-fallback"],
 	title: null,
 	attributeBindings: ["role", "aria-hidden", "title"],
 	text: Ember.computed("icon", function() {
@@ -27,7 +27,7 @@ export default Ember.Component.extend({
 	}),
 	fallback: true,
 	fallbackType: "glyph",
-	isDecorative: Ember.computed.notEmpty("title"),
+	isDecorative: Ember.computed.empty("icon"), /* it's decorative when no icon is passed in */
 	role: Ember.computed("isDecorative", function() {
 			return this.get("isDecorative") ? "presentation" : null;
 		}
