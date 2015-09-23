@@ -1,21 +1,30 @@
+{{partial "partials/icons"}}
 <main>
 	<article>
 		<h2>Accessible Icon</h2>
 		<section>
 			<h3>Basic</h3>
 			{{accessible-icon icon="wrench"}}
+			<h3>Basic with CSS font</h3>
+			{{accessible-icon icon="wrench" type="css"}}
 		</section>
 		<section>
 			<h3>With Title:</h3>
 			{{accessible-icon icon="lock" title="Authenticate to Log In"}}
+			<h3>With title in CSS font:</h3>
+			{{accessible-icon icon="lock" title="Authenticate to Log In" type="css"}}
 		</section>
 		<section>
 			<h3>Custom Fallback Type <sup>(image instead of default "glyph")</sup></h3>
 			{{accessible-icon icon="download" title="Download Video Archive" fallbackType="image"}}
+			<h3>Custom Fallback Type <sup>(image instead of default "glyph") in CSS font</sup></h3>
+			{{accessible-icon icon="download" title="Download Video Archive" fallbackType="image" type="css"}}
 		</section>
 		<section>
 			<h3>Without Fallback</h3>
 			{{accessible-icon icon="download" title="Download Video Archive" fallback=false}}
+			<h3>Without Fallback in CSS font</h3>
+			{{accessible-icon icon="download" title="Download Video Archive" fallback=false type="CSS"}}
 		</section>
 	</article>
 </main>

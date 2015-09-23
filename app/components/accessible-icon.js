@@ -9,7 +9,15 @@ export default Ember.Component.extend({
 	 * 	.icon .icon-wrench
 	 */
 	namespace: "icon",
-	classNameBindings: [":accessible-icon", "fallbackClassName", "fallback:has-fallback"],
+	iconPrefix: Ember.computed.alias("namespace"),
+	/**
+	 * @property {string} type whether to use css fonts or SVG
+	 * @example
+	 * 	"svg", "font"
+	 */
+	type: "svg",
+	svgEnabled: Ember.computed.equal("type", "svg"),
+	classNameBindings: [":accessible-icon", "fallbackClassName", "fallback:has-fallback", "iconClass"],
 	title: null,
 	attributeBindings: ["role", "aria-hidden", "title"],
 	text: Ember.computed("icon", function() {

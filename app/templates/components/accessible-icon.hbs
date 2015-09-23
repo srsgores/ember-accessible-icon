@@ -1,5 +1,11 @@
 {{#if icon}}
-	<span class="{{iconClassName}}" aria-hidden="{{iconHiddenToScreenReader}}"></span>
+	{{#if svgEnabled}}
+		<svg class="{{iconClassName}}">
+			<use xlink:href="#{{namespace}}-{{icon}}"></use>
+		</svg>
+	{{else}}
+		<span class="{{iconClassName}}" aria-hidden="{{iconHiddenToScreenReader}}"></span>
+	{{/if}}
 {{/if}}
 
 {{#if fallback}}
@@ -9,6 +15,5 @@
 		</span>
 	{{/if}}
 {{/if}}
-
 
 {{yield}}
