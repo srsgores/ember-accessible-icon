@@ -1,10 +1,10 @@
 {{#if icon}}
-	<span {{bind-attr class=iconClassName aria-hidden=iconHiddenToScreenReader}}></span>
+	<span class="{{iconClassName}}" aria-hidden="{{iconHiddenToScreenReader}}"></span>
 {{/if}}
 
 {{#if fallback}}
 	{{#if text}}
-		<span {{bind-attr class=fallbackTextClassName}}>
+		<span class="{{fallbackTextClassName}}">
 			{{text}}
 		</span>
 	{{/if}}

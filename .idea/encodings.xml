@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
-    <file url="file://$PROJECT_DIR$/../axiom-prototype/app/templates/application.hbs" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../axiom-prototype/package.json" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/.gitignore" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/components/accessible-icon.js" charset="UTF-8" />
@@ -14,6 +12,6 @@
     <file url="file://$PROJECT_DIR$/tests/helpers/resolver.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tests/index.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tests/unit/components/accessible-icon-test.js" charset="UTF-8" />
-    <file url="file://H:/Windows Backup/GitHub/GitHub/MyAxiom2014/components/intranet/com_my_admin/my_admin.php" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
