@@ -8,6 +8,8 @@ Keep your icons accessible, using this binding-friendly component.  Produces the
 
 Since each project has its own varied support and supported browsers, I opted to not include any feature detection.  To do this, include these scripts in your ``Brocfile.js``:
 
+> **New** in version ``2.0.0``: support for **SVG icons**
+
 ```
 npm install --save-dev afontgarde
 ```
